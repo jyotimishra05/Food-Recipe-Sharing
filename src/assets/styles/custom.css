@@ -1,0 +1,23 @@
+/* src/assets/styles/custom.css */
+body {
+    font-family: 'Arial', sans-serif !important;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: 'Georgia', serif !important;
+  }
+  
+  button {
+    cursor: pointer;
+    background-color: rgb(1, 74, 5) !important; 
+  }
+  
+
+  .bg-addrecipe-background{
+    background-image: url("https://cdn.pixabay.com/photo/2015/09/14/11/43/restaurant-939435_640.jpg");
+  }
+  .bg-about-background{
+background-image:url("https://www.shutterstock.com/image-illustration/wooden-top-table-bokeh-light-600nw-1724768491.jpg");
+  }
+  
+  
