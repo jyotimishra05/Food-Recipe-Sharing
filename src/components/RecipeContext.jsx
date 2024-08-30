@@ -1,4 +1,4 @@
-// src/contexts/RecipeContext.js
+
 import React, { createContext, useState, useContext, useEffect } from "react";
 import {defaultRecipes} from "../utils/data"; // Adjust the path as necessary
 
@@ -38,7 +38,7 @@ export function RecipeProvider({ children }) {
     const recipe = recipes.find((r) => r.id === recipeId);
     return recipe && recipe.userId === userId;
   };
-
+// console.log("recipe", recipes);
   return (
     <RecipeContext.Provider
       value={{ recipes, addRecipe, updateRecipe, deleteRecipe, canEditRecipe }}

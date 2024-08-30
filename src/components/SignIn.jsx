@@ -4,6 +4,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import "./SignIn.css"; // Ensure this CSS file exists
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -14,13 +16,25 @@ function SignIn() {
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
-     const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
       localStorage.setItem("user", JSON.stringify({ uid: user.uid }));
-      navigate("/");
-      //  navigate("/add-recipe");
 
-      // Handle successful sign-in (e.g., redirect)
+      // Show success toast notification
+      
+      toast.success("Signed in successfully!", {
+        position: "top-center",
+        autoClose: 3000,
+      });
+
+      // Redirect after a delay to allow the toast to be visible
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } catch (error) {
       setError(error.message);
     }
@@ -28,6 +42,7 @@ function SignIn() {
 
   return (
     <div className="sign-in-container">
+      <ToastContainer />
       <h2 className="text-3xl font-bold text-center mb-4">Sign In</h2>
       {error && <p className="text-red-500 text-center mb-4">{error}</p>}
       <form onSubmit={handleSignIn} className="form-container">

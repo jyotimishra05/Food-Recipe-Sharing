@@ -9,7 +9,7 @@ function RecipeList() {
   useEffect(() => {
     setFilteredRecipes(recipes);
   }, [recipes]);
-
+// console.log("recipe", recipes);
   const handleSearch = (query) => {
     const filtered = recipes.filter((recipe) =>
       recipe.title.toLowerCase().includes(query.toLowerCase())
@@ -32,7 +32,8 @@ function RecipeList() {
       </div>
       <h1 className="text-3xl font-bold mb-6">All Recipes</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredRecipes.map((recipe) => (
+      
+        {filteredRecipes.length==0?<h1 className=" font-bold text-white text-xl">Recipe not Found! </h1>:filteredRecipes.map((recipe) => (
           <div key={recipe.id} className="bg-white p-4 rounded-lg shadow-lg">
             {recipe.image && (
               <img
